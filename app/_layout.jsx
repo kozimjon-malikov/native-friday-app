@@ -5,14 +5,13 @@ import { Tabs } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Main = () => {
-  const [heart, setHeartIcon] = useState('heart-o');
-  const toggleHeart = () => {
-    setHeartIcon(prevIcon => (prevIcon === 'heart' ? 'heart-o' : 'heart'));
-  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="light-content" backgroundColor="crimson" />
-      <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+      <StatusBar
+                animated={true}
+                backgroundColor="#fd2ff3"
+                barStyle={'default'} />
+      <Tabs screenOptions={{ tabBarActiveTintColor: '#f835ee' }}>
         <Tabs.Screen
           name="index"
           options={{
@@ -21,20 +20,12 @@ const Main = () => {
             tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
           }}
         />
-        <Tabs.Screen
-          name="user"
+        <Tabs.Screen 
+          name="weather"
           options={{
-            title: 'Users',
+            title: 'Weather',
             headerShown: false,
-            tabBarIcon: ({ color }) => <FontAwesome size={28} name="book" color={color} />,
-          }}
-        />
-        <Tabs.Screen onPress={toggleHeart}
-          name="liked"
-          options={{
-            title: 'Liked',
-            headerShown: false,
-            tabBarIcon: ({ color }) => <FontAwesome size={28} name={heart} color={color} />,
+            tabBarIcon: ({ color }) => <FontAwesome size={28} name='cloud' color={color} />,
           }}
         />
       </Tabs>
